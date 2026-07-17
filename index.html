@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatatUang - Pencatatan Keuangan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Aplikasi Keuangan Pribadi</p>
+        <h1>Catat pemasukan dan pengeluaran dengan rapi.</h1>
+        <p class="hero-copy">Pantau saldo, lihat arus kas, dan simpan riwayat transaksi langsung di browser kamu.</p>
+      </div>
+      <div class="hero-card">
+        <span>Saldo Saat Ini</span>
+        <strong id="balanceAmount">Rp0</strong>
+        <small>Data tersimpan otomatis di perangkat ini</small>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Ringkasan keuangan">
+      <article class="summary-card">
+        <span>Total Pemasukan</span>
+        <strong id="incomeAmount">Rp0</strong>
+      </article>
+      <article class="summary-card expense">
+        <span>Total Pengeluaran</span>
+        <strong id="expenseAmount">Rp0</strong>
+      </article>
+      <article class="summary-card">
+        <span>Jumlah Transaksi</span>
+        <strong id="transactionCount">0</strong>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <form class="panel transaction-form" id="transactionForm">
+        <div class="panel-heading">
+          <p class="eyebrow">Tambah Catatan</p>
+          <h2>Transaksi Baru</h2>
+        </div>
+
+        <label>
+          Nama transaksi
+          <input type="text" id="transactionName" placeholder="Contoh: Gaji bulanan" required>
+        </label>
+
+        <label>
+          Nominal
+          <input type="number" id="transactionAmount" placeholder="Contoh: 250000" min="1" required>
+        </label>
+
+        <div class="form-row">
+          <label>
+            Tipe
+            <select id="transactionType" required>
+              <option value="income">Pemasukan</option>
+              <option value="expense">Pengeluaran</option>
+            </select>
+          </label>
+
+          <label>
+            Kategori
+            <select id="transactionCategory" required>
+              <option value="Gaji">Gaji</option>
+              <option value="Makanan">Makanan</option>
+              <option value="Transportasi">Transportasi</option>
+              <option value="Belanja">Belanja</option>
+              <option value="Tagihan">Tagihan</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Tanggal
+          <input type="date" id="transactionDate" required>
+        </label>
+
+        <button type="submit">Simpan Transaksi</button>
+      </form>
+
+      <section class="panel">
+        <div class="panel-heading transaction-heading">
+          <div>
+            <p class="eyebrow">Riwayat</p>
+            <h2>Daftar Transaksi</h2>
+          </div>
+          <select id="transactionFilter" aria-label="Filter transaksi">
+            <option value="all">Semua</option>
+            <option value="income">Pemasukan</option>
+            <option value="expense">Pengeluaran</option>
+          </select>
+        </div>
+
+        <div class="transaction-list" id="transactionList"></div>
+        <p class="empty-state" id="emptyState">Belum ada transaksi. Tambahkan catatan pertamamu.</p>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
